@@ -16,36 +16,36 @@
 
 return [
 
-    // Primary brand colour (buttons, links, active states) — the dark navy of the logo tile
-    'brand'        => '#1e1b4b',
-    'brand_dark'   => '#0f1230',   // hover / pressed, strong headings, table heads
-    'brand_light'  => '#3b3680',   // gradient end, decorative orbs
-    'brand_soft'   => '#ecebf6',   // tinted backgrounds behind brand text (selected rows, chips)
+    // Primary brand colour (buttons, links, active states) — deep teal
+    'brand'        => '#0f766e',
+    'brand_dark'   => '#134e4a',   // hover / pressed, strong headings, table heads
+    'brand_light'  => '#14b8a6',   // gradient end, decorative orbs
+    'brand_soft'   => '#e7f6f4',   // tinted backgrounds behind brand text (selected rows, chips)
 
-    // Secondary accent — the cyan lightning in the logo (small highlights, ticker dots, focus rings)
-    'accent'       => '#22d3ee',
-    'accent_soft'  => '#e4fbff',
+    // Secondary accent — warm amber (small highlights, ticker dots, focus rings)
+    'accent'       => '#f59e0b',
+    'accent_soft'  => '#fef3c7',
 
     // Gradient used on primary buttons, icon tiles and hero banners
-    'grad'         => 'linear-gradient(135deg,#0f1230 0%,#1e1b4b 55%,#3b3680 100%)',
-    'grad_hover'   => 'linear-gradient(135deg,#1e1b4b 0%,#2a2e52 55%,#4c2fd9 100%)',
+    'grad'         => 'linear-gradient(135deg,#134e4a 0%,#0f766e 55%,#14b8a6 100%)',
+    'grad_hover'   => 'linear-gradient(135deg,#0f766e 0%,#119184 55%,#2dd4bf 100%)',
 
     // Status colours
-    'sale'         => '#ff4d7d',   // discounts, "Shop Now" hero button, cart badge
-    'success'      => '#14b88a',
+    'sale'         => '#f97316',   // discounts, "Shop Now" hero button, cart badge
+    'success'      => '#22c55e',
     'warning'      => '#f6a609',
     'danger'       => '#dc2626',
     'star'         => '#ffb400',
 
     // Text & surfaces (storefront)
-    'ink'          => '#0f1230',
-    'ink_2'        => '#2a2e52',
-    'muted'        => '#6b7191',
-    'faint'        => '#9aa0bd',
-    'surface'      => '#f6f7fc',
-    'line'         => '#e7e9f3',
-    'line_2'       => '#d9dcec',
+    'ink'          => '#0c2a27',
+    'ink_2'        => '#1e3d39',
+    'muted'        => '#5b7370',
+    'faint'        => '#8fa6a2',
+    'surface'      => '#f3f8f7',
+    'line'         => '#e1ecea',
+    'line_2'       => '#d1e0dd',
 
     // Shadows / glow derived from the brand (rgb triplet of brand_dark)
-    'shadow_rgb'   => '15,18,48',
+    'shadow_rgb'   => '19,78,74',
 ];
