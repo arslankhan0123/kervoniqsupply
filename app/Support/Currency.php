@@ -29,7 +29,7 @@ class Currency
 
     public static function base(): string
     {
-        return config('currencies.base', 'PKR');
+        return config('currencies.base', 'USD');
     }
 
     public static function default(): string

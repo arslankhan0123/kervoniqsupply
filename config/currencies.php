@@ -4,21 +4,21 @@
 |--------------------------------------------------------------------------
 | Currencies & locations
 |--------------------------------------------------------------------------
-| Product prices in the database are stored in the BASE currency (PKR).
+| Product prices in the database are stored in the BASE currency (USD).
 | `rate` = how many units of that currency 1 unit of the base currency buys
 | (display price = stored price × rate). Rates are approximate and can be
-| overridden from .env (e.g. CURRENCY_RATE_USD=0.0036).
+| overridden from .env (e.g. CURRENCY_RATE_GBP=0.79).
 |
 | `default` is what a visitor sees before (or if) IP detection fails.
 */
 
 return [
 
-    'base'    => 'PKR',
+    'base'    => 'USD',
     'default' => env('CURRENCY_DEFAULT', 'USD'),
 
     'currencies' => [
-        'USD' => ['symbol' => '$', 'name' => 'US Dollar', 'rate' => (float) env('CURRENCY_RATE_USD', 0.003571), 'decimals' => 2],
+        'USD' => ['symbol' => '$', 'name' => 'US Dollar', 'rate' => 1.0, 'decimals' => 2], // base currency — always 1.0
         'GBP' => ['symbol' => '£', 'name' => 'British Pound', 'rate' => (float) env('CURRENCY_RATE_GBP', 0.002817), 'decimals' => 2],
         'EUR' => ['symbol' => '€', 'name' => 'Euro', 'rate' => (float) env('CURRENCY_RATE_EUR', 0.003333), 'decimals' => 2],
         'AED' => ['symbol' => 'AED', 'name' => 'UAE Dirham', 'rate' => (float) env('CURRENCY_RATE_AED', 0.013123), 'decimals' => 2],

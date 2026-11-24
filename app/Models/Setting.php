@@ -30,17 +30,17 @@ class Setting extends Model
             'mail_admin_address' => '',
             'store_name'         => 'KervoniqSupply',
             'store_tagline'      => 'Smart Shopping',
-            'store_phone'        => '+92 300 0000000',
+            'store_phone'        => '+1 800 000 0000',
             'store_whatsapp'     => '',
             'store_email'        => 'sales@kervoniqsupply.com',
             'store_address'      => 'United States',
-            'store_hours'        => 'Mon – Sat, 9 AM – 6 PM PKT',
+            'store_hours'        => 'Mon – Sat, 9 AM – 6 PM EST',
             'store_facebook'     => '',
             'store_instagram'    => '',
             'store_twitter'      => '',
             'store_pinterest'    => '',
             // Shipping & delivery promises (shown on product pages, cart, checkout, emails, PDF)
-            'ship_free_over_usd'     => '30',     // free delivery when order subtotal ≥ this (entered in USD, converted to each currency)
+            'ship_free_over_usd'     => '3000',     // free delivery when order subtotal ≥ this (entered in USD, converted to each currency)
             'ship_fee_usd'           => '0',      // flat delivery fee below the threshold (USD); 0 = always free
             'ship_delivery_days'     => '2–5',    // e.g. "2–5" (business days)
             'ship_pack_hours'        => '24',
@@ -80,7 +80,7 @@ class Setting extends Model
             // Branding (paths relative to /public, uploaded from Admin → Settings)
             'brand_logo'             => 'images/logo-3cf5b9f4.webp',
             'brand_icon'             => 'images/icon-0bac58b9.webp',
-            'brand_print'            => '',
+            'brand_print'            => 'images/logo-kv.png',
             // Payments
             'pay_cod_enabled'        => '1',
             'pay_stripe_enabled'     => '0',

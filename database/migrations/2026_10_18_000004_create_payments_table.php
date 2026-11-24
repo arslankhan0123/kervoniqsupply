@@ -55,7 +55,7 @@ return new class extends Migration
                     'status'            => $status,
                     'payment_intent_id' => $o->payment_intent_id ?? null,
                     'amount'            => round((float) $o->total * (float) ($o->exchange_rate ?? 1), 2),
-                    'currency'          => $o->currency_code ?? 'PKR',
+                    'currency'          => $o->currency_code ?? 'USD',
                     'billing_email'     => $o->customer_email,
                     'ip_address'        => $o->ip_address ?? null,
                     'paid_at'           => $o->paid_at ?? ($status === 'paid' ? $o->updated_at : null),

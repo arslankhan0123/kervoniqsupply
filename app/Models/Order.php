@@ -34,7 +34,7 @@ class Order extends Model {
         return zorder_price($this, $amount);
     }
 
-    /** "Lahore, Punjab, Pakistan" from the IP lookup, or null when nothing was captured. */
+    /** "New York, NY, United States" from the IP lookup, or null when nothing was captured. */
     public function getIpLocationAttribute(): ?string
     {
         $parts = array_filter([$this->ip_city, $this->ip_region, $this->ip_country]);

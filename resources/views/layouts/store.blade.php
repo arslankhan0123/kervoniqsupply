@@ -22,7 +22,7 @@ window.zmoney=function(n){var c=window.ZCUR,v=(Number(n)||0)*c.rate,s=v.toLocale
 @endif
 <meta name="theme-color" content="{{ ztheme('brand_dark') }}">
 @include('partials.theme-vars')
-<meta property="og:image" content="{{ asset('images/logo.png') }}">
+<meta property="og:image" content="{{ asset('images/logo-kv.png') }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">

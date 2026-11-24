@@ -10,7 +10,7 @@ return new class extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             // Currency the customer saw at checkout (amounts stay stored in the base currency)
-            $table->string('currency_code', 3)->default('PKR')->after('total');
+            $table->string('currency_code', 3)->default('USD')->after('total');
             $table->string('currency_symbol', 8)->default('Rs')->after('currency_code');
             $table->decimal('exchange_rate', 14, 6)->default(1)->after('currency_symbol');
 

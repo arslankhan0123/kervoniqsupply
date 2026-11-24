@@ -51,7 +51,7 @@
 @section('content')
 @include('shop.partials.page-hero', ['id'=>'contactHero','crumbs'=>[['Home',route('home')],['Contact',null]],'slides'=>[
   ['title'=>'Get in <span>Touch</span>','text'=>'Questions, feedback or just saying hello — we\'d love to hear from you.','icon'=>'fa-comments'],
-  ['title'=>'We Reply <span>Within 24 Hours</span>','text'=>'Monday to Saturday, 9 AM – 6 PM PKT. Usually much faster.','icon'=>'fa-clock'],
+  ['title'=>'We Reply <span>Within 24 Hours</span>','text'=>'Monday to Saturday, 9 AM – 6 PM EST. Usually much faster.','icon'=>'fa-clock'],
 ]])
 
 <section class="ct wrap">
@@ -80,7 +80,7 @@
       @endforeach
       <div class="ibox reveal" data-delay="4" style="display:block">
         <b style="display:block;margin-bottom:10px"><i class="fa-regular fa-clock" style="color:var(--p);margin-right:8px"></i>Support hours</b>
-        <div style="font-size:14px;font-weight:700;color:var(--ink)">{{ zstore('hours','Mon – Sat, 9 AM – 6 PM PKT') }}</div>
+        <div style="font-size:14px;font-weight:700;color:var(--ink)">{{ zstore('hours','Mon – Sat, 9 AM – 6 PM EST') }}</div>
         <div style="font-size:12.5px;color:var(--muted);margin-top:4px">Messages sent outside these hours are answered the next working day.</div>
       </div>
       <div class="wa reveal" data-delay="4">

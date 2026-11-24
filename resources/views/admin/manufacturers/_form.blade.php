@@ -74,7 +74,7 @@
             <div>
                 <label class="form-label">Contact Phone <span class="text-gray-400 font-normal text-xs ml-1">(optional)</span></label>
                 <input type="text" name="phone" value="{{ old('phone', $m->phone ?? '') }}" maxlength="40"
-                       class="form-input" placeholder="+92 300 1234567">
+                       class="form-input" placeholder="+1 212 555 0100">
             </div>
         </div>
     </div>

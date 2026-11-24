@@ -202,7 +202,7 @@ class ChatbotController extends Controller
         $label = [
             'America/New_York' => 'US Eastern', 'America/Chicago' => 'US Central',
             'America/Denver' => 'US Mountain', 'America/Los_Angeles' => 'US Pacific',
-            'UTC' => 'UTC', 'Europe/London' => 'UK', 'Asia/Karachi' => 'Pakistan',
+            'UTC' => 'UTC', 'Europe/London' => 'UK',
         ][$tz] ?? str_replace('_', ' ', $tz);
         return ['open' => $open, 'text' => $fmt($start) . '–' . $fmt($end) . ' ' . $label . ' time', 'tz' => $tz, 'start' => $start, 'end' => $end];
     }

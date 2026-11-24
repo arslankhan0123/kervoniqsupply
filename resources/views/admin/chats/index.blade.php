@@ -59,7 +59,7 @@
     <label>From <input type="time" name="start" value="{{ $hours['start'] }}" required></label>
     <label>To <input type="time" name="end" value="{{ $hours['end'] }}" required></label>
     <select name="tz">
-      @foreach(['America/New_York'=>'US Eastern','America/Chicago'=>'US Central','America/Denver'=>'US Mountain','America/Los_Angeles'=>'US Pacific','UTC'=>'UTC','Europe/London'=>'UK','Asia/Karachi'=>'Pakistan'] as $tz => $lbl)
+      @foreach(['America/New_York'=>'US Eastern','America/Chicago'=>'US Central','America/Denver'=>'US Mountain','America/Los_Angeles'=>'US Pacific','UTC'=>'UTC','Europe/London'=>'UK'] as $tz => $lbl)
         <option value="{{ $tz }}" {{ $hours['tz'] === $tz ? 'selected' : '' }}>{{ $lbl }}</option>
       @endforeach
     </select>

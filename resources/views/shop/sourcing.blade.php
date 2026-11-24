@@ -258,7 +258,7 @@
             <input class="inp" type="email" name="email" value="{{ old('email', auth()->user()->email ?? '') }}" required placeholder="you@example.com">
           </div>
           <div class="col-sm-6 fld"><label>Phone / WhatsApp</label>
-            <input class="inp" name="phone" value="{{ old('phone') }}" placeholder="+92 300 0000000">
+            <input class="inp" name="phone" value="{{ old('phone') }}" placeholder="+1 800 000 0000">
           </div>
           <div class="col-sm-6 fld"><label>Company</label>
             <input class="inp" name="company" value="{{ old('company') }}" placeholder="Optional">

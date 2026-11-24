@@ -192,11 +192,11 @@
                     </div>
                     <div>
                         <label class="form-label">Hotline phone</label>
-                        <input type="text" name="store_phone" value="{{ old('store_phone', $s['store_phone'] ?? '') }}" placeholder="+92 300 0000000" class="form-input">
+                        <input type="text" name="store_phone" value="{{ old('store_phone', $s['store_phone'] ?? '') }}" placeholder="+1 800 000 0000" class="form-input">
                     </div>
                     <div>
                         <label class="form-label">WhatsApp number</label>
-                        <input type="text" name="store_whatsapp" value="{{ old('store_whatsapp', $s['store_whatsapp'] ?? '') }}" placeholder="+92 300 0000000 (blank = use hotline)" class="form-input">
+                        <input type="text" name="store_whatsapp" value="{{ old('store_whatsapp', $s['store_whatsapp'] ?? '') }}" placeholder="+1 800 000 0000 (blank = use hotline)" class="form-input">
                     </div>
                     <div>
                         <label class="form-label">Support email</label>
@@ -205,7 +205,7 @@
                     </div>
                     <div>
                         <label class="form-label">Support hours</label>
-                        <input type="text" name="store_hours" value="{{ old('store_hours', $s['store_hours'] ?? '') }}" placeholder="Mon – Sat, 9 AM – 6 PM PKT" class="form-input">
+                        <input type="text" name="store_hours" value="{{ old('store_hours', $s['store_hours'] ?? '') }}" placeholder="Mon – Sat, 9 AM – 6 PM EST" class="form-input">
                     </div>
                     <div class="md:col-span-2">
                         <label class="form-label">Address</label>

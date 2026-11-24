@@ -21,7 +21,7 @@ class LiveChatController extends Controller
         $data = $request->validate([
             'start' => ['required', 'regex:/^([01]\d|2[0-3]):[0-5]\d$/'],
             'end'   => ['required', 'regex:/^([01]\d|2[0-3]):[0-5]\d$/'],
-            'tz'    => ['required', 'string', 'max:50', 'in:America/New_York,America/Chicago,America/Denver,America/Los_Angeles,UTC,Europe/London,Asia/Karachi'],
+            'tz'    => ['required', 'string', 'max:50', 'in:America/New_York,America/Chicago,America/Denver,America/Los_Angeles,UTC,Europe/London'],
         ]);
         \App\Models\Setting::setMany([
             'chat_start' => $data['start'],

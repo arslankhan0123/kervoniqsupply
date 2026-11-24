@@ -12,7 +12,7 @@ return new class extends Migration {
             $table->string('phone', 30)->nullable();
             $table->text('address')->nullable();
             $table->string('city', 100)->nullable();
-            $table->string('country', 100)->nullable()->default('Pakistan');
+            $table->string('country', 100)->nullable()->default('United States');
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });
