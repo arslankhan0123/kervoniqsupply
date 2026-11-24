@@ -7,8 +7,8 @@
 @php $zc = zcur(); @endphp
 <script>window.ZCUR={code:@json($zc['code']),symbol:@json($zc['symbol']),rate:{{ (float) $zc['rate'] }},decimals:{{ (int) $zc['decimals'] }}};
 window.zmoney=function(n){var c=window.ZCUR,v=(Number(n)||0)*c.rate,s=v.toLocaleString('en-US',{minimumFractionDigits:c.decimals,maximumFractionDigits:c.decimals});return (c.symbol.length<=2&&!/^[A-Za-z]+$/.test(c.symbol))?c.symbol+s:c.symbol+' '+s};</script>
-<title>@yield('title', 'Shop') · {{ zstore('name','Zelari') }}</title>
-<meta name="description" content="@yield('meta_description', zstore('name','Zelari').' — '.zstore('tagline','a smarter way to shop').'. Curated products, honest prices, fast delivery across Pakistan.')">
+<title>@yield('title', 'Shop') · {{ zstore('name','KervoniqSupply') }}</title>
+<meta name="description" content="@yield('meta_description', zstore('name','KervoniqSupply').' — '.zstore('tagline','a smarter way to shop').'. Curated products, honest prices, fast nationwide delivery.')">
 
 @if(zbrand_custom('icon'))
 <link rel="icon" href="{{ zbrand('icon') }}">
@@ -192,7 +192,7 @@ button,input,select,textarea{font-family:inherit}
 .acct-out{margin:6px 0 0;padding-top:6px;border-top:1px solid var(--line)}
 .acct-out button{color:var(--sale)}
 .acct-out button i{color:var(--sale)}
-.drawer .dloc{padding:12px 18px 4px;border-bottom:1px solid var(--surface)}
+.drawer .dloc{padding:12px 18px 12px;border-bottom:1px solid var(--surface);flex-shrink:0}
 .drawer .dloc label{display:block;font-size:12px;letter-spacing:.06em;color:var(--faint);text-transform:uppercase;margin-bottom:6px}
 .drawer .dloc select{width:100%;border:1.5px solid var(--line-2);border-radius:12px;padding:10px 12px;font:inherit;font-weight:600;background:#fff}
 .search{flex:1;display:flex;align-items:stretch;max-width:640px;margin:0 auto;position:relative;border:2px solid var(--line-2);border-radius:999px;background:#fff;transition:.2s}
@@ -300,10 +300,11 @@ button,input,select,textarea{font-family:inherit}
 .drawer{position:fixed;top:0;left:0;bottom:0;width:min(340px,88vw);background:#fff;z-index:1101;transform:translateX(-100%) ;transition:transform .35s cubic-bezier(.2,.7,.2,1);display:flex;flex-direction:column;overflow-y:auto}
 body.drawer-open .drawer-bg{opacity:1;visibility:visible}
 body.drawer-open .drawer{transform:none}
-.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line)}
-.drawer form{display:flex;margin:14px 18px;border:1.5px solid var(--line-2);border-radius:12px;overflow:hidden}
-.drawer form input{flex:1;border:0;padding:10px 14px;outline:0;min-width:0}
-.drawer form button{border:0;background:var(--grad);color:#fff;width:46px}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line);flex-shrink:0}
+.drawer > form{display:flex;margin:14px 18px;border:1.5px solid var(--line-2);border-radius:12px;overflow:hidden;flex-shrink:0;height:48px}
+.drawer > form input{flex:1;border:0;padding:0 14px;outline:0;min-width:0;font-size:14px;height:100%}
+.drawer > form button{border:0;background:var(--grad);color:#fff;width:48px;font-size:15px;flex-shrink:0}
+.drawer nav{flex-shrink:0}
 .drawer nav a{display:flex;align-items:center;gap:12px;padding:13px 18px;font-weight:700;font-size:15px;border-bottom:1px solid var(--surface)}
 .drawer nav a i{width:22px;color:var(--p)}
 .ctree-item a{display:flex;align-items:center;gap:10px;padding:8px 10px;padding-left:calc(10px + var(--d,0) * 16px);border-radius:10px;font-size:14px;color:var(--ink-2);font-weight:600;transition:.15s}
@@ -320,7 +321,14 @@ body.drawer-open .drawer{transform:none}
 .ctree-item a .tog.open{transform:rotate(180deg)}
 .ctree-kids{display:none}
 .ctree-kids.show{display:block}
-.drawer .dcats{padding:8px 18px 20px}
+.drawer .dcats{padding:10px 18px 24px;flex-shrink:0}
+.dcats-btn{display:flex;align-items:center;gap:10px;width:100%;border:1.5px solid var(--line-2);background:var(--surface);border-radius:12px;padding:13px 14px;font-family:inherit;font-weight:800;font-size:14.5px;color:var(--ink);cursor:pointer;transition:.2s}
+.dcats-btn > i:first-child{color:var(--p);font-size:15px}
+.dcats-btn .arr{margin-left:auto;font-size:11px;color:var(--faint);transition:transform .25s}
+.dcats-btn.open{border-color:var(--p);background:var(--brand-soft)}
+.dcats-btn.open .arr{transform:rotate(180deg)}
+.dcats-body{display:none;margin-top:8px}
+.dcats-body.show{display:block}
 .drawer .dcats h6{font-size:12px;letter-spacing:.06em;color:var(--faint);margin:12px 0 6px;text-transform:uppercase}
 
 /* ─── Mobile bottom nav ─── */
@@ -445,8 +453,8 @@ body.drawer-open .drawer{transform:none}
     <div class="topbar-loc"><i class="fa-solid fa-location-dot"></i><span>{{ zstore('address') }}</span></div>
     <div class="topbar-marquee">
       <span>
-        <b>Welcome to {{ zstore('name','Zelari') }}!</b> {{ zfree_over() > 0 ? 'Free delivery on orders over '.zprice(zfree_over()) : 'Free delivery on every order' }}<i class="sep"></i><em>New arrivals</em> added every week<i class="sep"></i>Weekend deals refresh every Friday<i class="sep"></i>Cash on delivery available nationwide<i class="sep"></i>7-day easy returns on every order<i class="sep"></i>
-        <b>Welcome to {{ zstore('name','Zelari') }}!</b> {{ zfree_over() > 0 ? 'Free delivery on orders over '.zprice(zfree_over()) : 'Free delivery on every order' }}<i class="sep"></i><em>New arrivals</em> added every week<i class="sep"></i>Weekend deals refresh every Friday<i class="sep"></i>Cash on delivery available nationwide<i class="sep"></i>7-day easy returns on every order<i class="sep"></i>
+        <b>Welcome to {{ zstore('name','KervoniqSupply') }}!</b> {{ zfree_over() > 0 ? 'Free delivery on orders over '.zprice(zfree_over()) : 'Free delivery on every order' }}<i class="sep"></i><em>New arrivals</em> added every week<i class="sep"></i>Weekend deals refresh every Friday<i class="sep"></i>Cash on delivery available nationwide<i class="sep"></i>7-day easy returns on every order<i class="sep"></i>
+        <b>Welcome to {{ zstore('name','KervoniqSupply') }}!</b> {{ zfree_over() > 0 ? 'Free delivery on orders over '.zprice(zfree_over()) : 'Free delivery on every order' }}<i class="sep"></i><em>New arrivals</em> added every week<i class="sep"></i>Weekend deals refresh every Friday<i class="sep"></i>Cash on delivery available nationwide<i class="sep"></i>7-day easy returns on every order<i class="sep"></i>
       </span>
     </div>
   </div>
@@ -458,30 +466,10 @@ body.drawer-open .drawer{transform:none}
     <div class="hdr-main">
       <button class="icon-btn burger" id="burger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
 
-      <a href="{{ route('home') }}" class="logo" aria-label="{{ zstore('name','Zelari') }} home">@if(zbrand_custom('logo'))<img src="{{ zbrand('logo') }}" alt="{{ zstore('name','Zelari') }}">@else{!! zlogo('logo.svg') !!}@endif</a>
+      <a href="{{ route('home') }}" class="logo" aria-label="{{ zstore('name','KervoniqSupply') }} home">@if(zbrand_custom('logo'))<img src="{{ zbrand('logo') }}" alt="{{ zstore('name','KervoniqSupply') }}">@else{!! zlogo('logo.svg') !!}@endif</a>
 
 
       <div class="search">
-        @php $zcc = zcountry(); $zcountries = zcountries(); $zhere = $zcountries[$zcc] ?? reset($zcountries); @endphp
-        <div class="loc" id="locPick">
-        <button type="button" class="loc-pill" aria-haspopup="listbox" aria-expanded="false" title="Change location & currency">
-          <span class="flag"><img src="https://flagcdn.com/w40/{{ strtolower($zcc) }}.png" srcset="https://flagcdn.com/w80/{{ strtolower($zcc) }}.png 2x" alt="{{ $zhere['name'] }}" width="24" height="18"></span>
-          <span><small>Deliver to</small><strong>{{ $zhere['name'] }}<em>{{ $zc['code'] }}</em></strong></span>
-          <i class="fa-solid fa-chevron-down"></i>
-        </button>
-        <div class="loc-dd" role="listbox">
-          <h6>Choose your location</h6>
-          <div class="loc-search"><i class="fa-solid fa-magnifying-glass"></i><input type="search" placeholder="Search country or currency…" autocomplete="off" aria-label="Search country"></div>
-          <div class="loc-list">
-          @foreach($zcountries as $cc => $c)
-            <button type="button" class="js-loc {{ $cc === $zcc ? 'on' : '' }}" data-cc="{{ $cc }}" role="option" aria-selected="{{ $cc === $zcc ? 'true' : 'false' }}">
-              <span class="flag"><img src="https://flagcdn.com/w40/{{ strtolower($cc) }}.png" srcset="https://flagcdn.com/w80/{{ strtolower($cc) }}.png 2x" alt="" width="24" height="18" loading="lazy"></span><b>{{ $c['name'] }}</b><span>{{ $c['currency'] }}</span>@if($cc === $zcc)<i class="fa-solid fa-check"></i>@endif
-            </button>
-          @endforeach
-          <div class="loc-none">No match. Other countries are shown prices in USD ($).</div>
-          </div>
-        </div>
-      </div>
         <form action="{{ route('shop.index') }}" method="GET">
           <i class="fa-solid fa-magnifying-glass s-ic"></i><input type="text" name="q" value="{{ request('q') }}" placeholder="Search for products, brands and more…" autocomplete="off">
           <button type="submit" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -513,7 +501,7 @@ body.drawer-open .drawer{transform:none}
               @endif
               <form method="POST" action="{{ route('logout') }}" class="acct-out">@csrf<button type="submit" role="menuitem"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</button></form>
             @else
-              <div class="acct-head guest"><b>Welcome to {{ zstore('name','Zelari') }}</b><small>Log in to track orders and check out faster.</small></div>
+              <div class="acct-head guest"><b>Welcome to {{ zstore('name','KervoniqSupply') }}</b><small>Log in to track orders and check out faster.</small></div>
               <a href="{{ route('login') }}" class="acct-primary" role="menuitem"><i class="fa-solid fa-arrow-right-to-bracket"></i> Log in</a>
               @if(\Illuminate\Support\Facades\Route::has('register'))<a href="{{ route('register') }}" role="menuitem"><i class="fa-solid fa-user-plus"></i> Create account</a>@endif
             @endauth
@@ -572,15 +560,10 @@ body.drawer-open .drawer{transform:none}
 <div class="drawer-bg" id="drawerBg"></div>
 <aside class="drawer" id="drawer">
   <div class="drawer-head">
-    <a href="{{ route('home') }}" class="logo sm">@if(zbrand_custom('logo'))<img src="{{ zbrand('logo') }}" alt="{{ zstore('name','Zelari') }}">@else{!! zlogo('logo.svg', 'd') !!}@endif</a>
+    <a href="{{ route('home') }}" class="logo sm">@if(zbrand_custom('logo'))<img src="{{ zbrand('logo') }}" alt="{{ zstore('name','KervoniqSupply') }}">@else{!! zlogo('logo.svg', 'd') !!}@endif</a>
     <button class="icon-btn" id="drawerClose"><i class="fa-solid fa-xmark"></i></button>
   </div>
   <form action="{{ route('shop.index') }}" method="GET"><input type="text" name="q" placeholder="Search products…"><button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button></form>
-  <div class="dloc"><label>Location &amp; currency</label>
-    <select class="js-loc-select">
-      @foreach(zcountries() as $cc => $c)<option value="{{ $cc }}" {{ $cc === zcountry() ? 'selected' : '' }}>{{ $c['name'] }} — {{ $c['currency'] }}</option>@endforeach
-    </select>
-  </div>
   <nav>
     <a href="{{ route('home') }}"><i class="fa-solid fa-house"></i> Home</a>
     <a href="{{ route('shop.index') }}"><i class="fa-solid fa-bag-shopping"></i> Shop</a>
@@ -601,8 +584,13 @@ body.drawer-open .drawer{transform:none}
     @endauth
   </nav>
   <div class="dcats">
-    <h6>Categories</h6>
-    @include('shop.partials.cat-tree', ['items' => $navCategories ?? collect(), 'activePath' => [], 'depth' => 0])
+    <button type="button" class="dcats-btn" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('show')">
+      <i class="fa-solid fa-table-cells-large"></i> All Categories
+      <i class="fa-solid fa-chevron-down arr"></i>
+    </button>
+    <div class="dcats-body">
+      @include('shop.partials.cat-tree', ['items' => $navCategories ?? collect(), 'activePath' => [], 'depth' => 0])
+    </div>
   </div>
 </aside>
 
@@ -647,8 +635,8 @@ body.drawer-open .drawer{transform:none}
 
     <div class="f-main">
       <div class="f-brand">
-        <a href="{{ route('home') }}" class="logo lg">@if(zbrand_custom('logo'))<img src="{{ zbrand('logo') }}" alt="{{ zstore('name','Zelari') }}">@else{!! zlogo('logo-tagline.svg') !!}@endif</a>
-        <p>{{ zstore('tagline') ? zstore('tagline').'. ' : '' }}We curate quality products, keep prices honest, and deliver fast across Pakistan — with cash on delivery everywhere.</p>
+        <a href="{{ route('home') }}" class="logo lg">@if(zbrand_custom('logo'))<img src="{{ zbrand('logo') }}" alt="{{ zstore('name','KervoniqSupply') }}">@else{!! zlogo('logo-tagline.svg') !!}@endif</a>
+        <p>{{ zstore('tagline') ? zstore('tagline').'. ' : '' }}We curate quality products, keep prices honest, and deliver fast nationwide — with cash on delivery available everywhere.</p>
         @if(zstore('address'))<div class="fl"><i class="fa-solid fa-location-dot"></i> {{ zstore('address') }}</div>@endif
         @if(zstore('email'))<div class="fl"><i class="fa-solid fa-envelope"></i> <a href="mailto:{{ zstore('email') }}">{{ zstore('email') }}</a></div>@endif
       </div>
@@ -685,7 +673,7 @@ body.drawer-open .drawer{transform:none}
     </div>
 
     <div class="f-bottom">
-      <div>©{{ date('Y') }} {{ zstore('name','Zelari') }}. All rights reserved.</div>
+      <div>©{{ date('Y') }} {{ zstore('name','KervoniqSupply') }}. All rights reserved.</div>
       @include('shop.partials.payment-icons')
       <div class="socials"><span style="font-size:12px;margin-right:4px">Stay connected :</span>
         <a href="{{ zstore('facebook','#') }}" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i></a><a href="{{ zstore('twitter','#') }}" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i></a><a href="{{ zstore('instagram','#') }}" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i></a><a href="{{ zstore('pinterest','#') }}" target="_blank" rel="noopener"><i class="fa-brands fa-pinterest-p"></i></a>
@@ -701,6 +689,8 @@ body.drawer-open .drawer{transform:none}
   <a href="{{ route('cart.index') }}" class="{{ request()->routeIs('cart.*')?'active':'' }}"><i class="fa-solid fa-cart-shopping"></i>Cart<b class="cnt js-cart-count">{{ $cartCount ?? 0 }}</b></a>
   <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact')?'active':'' }}"><i class="fa-regular fa-comment-dots"></i>Help</a>
 </nav>
+
+@include('shop.partials.chatbot')
 
 <button class="totop" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 

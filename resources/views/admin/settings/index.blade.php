@@ -164,17 +164,17 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
                     <div>
                         <label class="form-label">From address</label>
-                        <input type="email" name="mail_from_address" value="{{ old('mail_from_address', $s['mail_from_address'] ?? '') }}" placeholder="orders@zelari.com" class="form-input @error('mail_from_address') border-red-400 @enderror">
+                        <input type="email" name="mail_from_address" value="{{ old('mail_from_address', $s['mail_from_address'] ?? '') }}" placeholder="orders@kervoniqsupply.com" class="form-input @error('mail_from_address') border-red-400 @enderror">
                         @error('mail_from_address') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
                         <p class="text-gray-400 text-xs mt-1.5">Most providers require this to match the username.</p>
                     </div>
                     <div>
                         <label class="form-label">From name</label>
-                        <input type="text" name="mail_from_name" value="{{ old('mail_from_name', $s['mail_from_name'] ?? 'Zelari') }}" placeholder="Zelari" class="form-input">
+                        <input type="text" name="mail_from_name" value="{{ old('mail_from_name', $s['mail_from_name'] ?? 'KervoniqSupply') }}" placeholder="KervoniqSupply" class="form-input">
                     </div>
                     <div class="md:col-span-2">
                         <label class="form-label">Admin notification email</label>
-                        <input type="email" name="mail_admin_address" value="{{ old('mail_admin_address', $s['mail_admin_address'] ?? '') }}" placeholder="owner@zelari.com" class="form-input @error('mail_admin_address') border-red-400 @enderror">
+                        <input type="email" name="mail_admin_address" value="{{ old('mail_admin_address', $s['mail_admin_address'] ?? '') }}" placeholder="owner@kervoniqsupply.com" class="form-input @error('mail_admin_address') border-red-400 @enderror">
                         <p class="text-gray-400 text-xs mt-1.5">Receives a copy of every new order and every contact-form message. Leave blank to disable.</p>
                     </div>
                 </div>
@@ -184,7 +184,7 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
                     <div>
                         <label class="form-label">Store name</label>
-                        <input type="text" name="store_name" value="{{ old('store_name', $s['store_name'] ?? 'Zelari') }}" class="form-input">
+                        <input type="text" name="store_name" value="{{ old('store_name', $s['store_name'] ?? 'KervoniqSupply') }}" class="form-input">
                     </div>
                     <div>
                         <label class="form-label">Tagline</label>
@@ -200,7 +200,7 @@
                     </div>
                     <div>
                         <label class="form-label">Support email</label>
-                        <input type="email" name="store_email" value="{{ old('store_email', $s['store_email'] ?? '') }}" placeholder="support@zelari.com" class="form-input @error('store_email') border-red-400 @enderror">
+                        <input type="email" name="store_email" value="{{ old('store_email', $s['store_email'] ?? '') }}" placeholder="support@kervoniqsupply.com" class="form-input @error('store_email') border-red-400 @enderror">
                         @error('store_email') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
                     </div>
                     <div>

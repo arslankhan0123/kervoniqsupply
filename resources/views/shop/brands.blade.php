@@ -68,7 +68,7 @@
   'id'     => 'brandHero',
   'crumbs' => [['Home', route('home')], ['Brands', null]],
   'slides' => [
-    ['title' => 'The brands we <span>stand behind</span>', 'text' => 'Every manufacturer stocked at ' . zstore('name', 'Zelari') . ' — checked, authorised and backed by our returns policy.', 'icon' => 'fa-award'],
+    ['title' => 'The brands we <span>stand behind</span>', 'text' => 'Every manufacturer stocked at ' . zstore('name', 'KervoniqSupply') . ' — checked, authorised and backed by our returns policy.', 'icon' => 'fa-award'],
   ],
 ])
 
@@ -141,7 +141,7 @@
   <div class="bpartner reveal">
     <div>
       <h2>Make it. We'll sell it.</h2>
-      <p>Are you a manufacturer or distributor? List your products with {{ zstore('name', 'Zelari') }} and reach customers {{ zship('coverage', 'nationwide') }} — we handle the storefront, payments and delivery.</p>
+      <p>Are you a manufacturer or distributor? List your products with {{ zstore('name', 'KervoniqSupply') }} and reach customers {{ zship('coverage', 'nationwide') }} — we handle the storefront, payments and delivery.</p>
     </div>
     <div class="pacts">
       <a href="{{ route('contact') }}" class="bp-btn"><i class="fa-solid fa-handshake"></i> Become a partner</a>

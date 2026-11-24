@@ -26,7 +26,7 @@ class ResetPasswordLink extends Notification
 
         $expire = (int) config('auth.passwords.' . config('auth.defaults.passwords') . '.expire', 60);
         $url    = url(route('password.reset', ['token' => $this->token, 'email' => $notifiable->getEmailForPasswordReset()], false));
-        $store  = Setting::get('store_name', 'Zelari');
+        $store  = Setting::get('store_name', 'KervoniqSupply');
 
         return (new MailMessage)
             ->subject("Reset your {$store} password")

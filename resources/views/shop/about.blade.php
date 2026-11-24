@@ -3,7 +3,7 @@
 
 @push('styles')
 <style>
-.ab{padding:60px 0 10px}
+.ab{padding-top:60px;padding-bottom:10px}
 .ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
 @media(max-width:992px){.ab-grid{grid-template-columns:1fr;gap:30px}}
 .ab-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--p-soft);color:var(--p);padding:6px 14px;border-radius:999px;font-size:12.5px;font-weight:800;margin-bottom:14px}
@@ -59,7 +59,7 @@
 
 @section('content')
 @include('shop.partials.page-hero', ['id'=>'aboutHero','crumbs'=>[['Home',route('home')],['About',null]],'slides'=>[
-  ['title'=>'We are <span>'.e(zstore('name','Zelari')).'</span>','text'=>'A modern online store built around one idea: shopping should be simple, honest and fast.','icon'=>'fa-rocket'],
+  ['title'=>'We are <span>'.e(zstore('name','KervoniqSupply')).'</span>','text'=>'A modern online store built around one idea: shopping should be simple, honest and fast.','icon'=>'fa-rocket'],
   ['title'=>'Quality You <span>Can Trust</span>','text'=>'Every product is checked by our team before it reaches our shelves.','icon'=>'fa-gem'],
   ['title'=>'Honest Pricing, <span>Always</span>','text'=>'No hidden fees. No surprise charges. What you see is what you pay.','icon'=>'fa-handshake'],
 ]])
@@ -68,8 +68,8 @@
   <div class="ab-grid">
     <div class="reveal">
       <span class="ab-eyebrow"><i class="fa-solid fa-sparkles"></i> Our story</span>
-      <h2>A smarter way to shop, <span>built in Pakistan</span></h2>
-      <p>{{ zstore('name','Zelari') }} started with a simple frustration: buying good things online shouldn't mean guessing about quality, prices or delivery. So we built a store that gets the basics right — curated products, transparent pricing and delivery you can count on.</p>
+      <h2>A smarter way to shop, <span>built for you</span></h2>
+      <p>{{ zstore('name','KervoniqSupply') }} started with a simple frustration: buying good things online shouldn't mean guessing about quality, prices or delivery. So we built a store that gets the basics right — curated products, transparent pricing and delivery you can count on.</p>
       <p>Today we ship across the country with cash on delivery, {{ zship('return_days','7') }}-day returns and a support team that actually replies. We're just getting started.</p>
       <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:22px">
         <a href="{{ route('shop.index') }}" class="btn-g"><i class="fa-solid fa-bag-shopping"></i> Shop now</a>
@@ -112,7 +112,7 @@
       <p>A short history of a store that keeps growing with its customers.</p>
     </div>
     <div class="tl reveal" data-delay="1">
-      <div class="tl-item"><small>DAY ONE</small><b>{{ zstore('name','Zelari') }} launches</b><p>A small catalog, cash on delivery and a promise to keep things honest.</p></div>
+      <div class="tl-item"><small>DAY ONE</small><b>{{ zstore('name','KervoniqSupply') }} launches</b><p>A small catalog, cash on delivery and a promise to keep things honest.</p></div>
       <div class="tl-item"><small>GROWTH</small><b>Nationwide delivery</b><p>Partnerships with couriers bring {{ zship('delivery_days','2–5') }} day delivery to every major city.</p></div>
       <div class="tl-item"><small>TRUST</small><b>{{ zship('return_days','7') }}-day returns & 24/7 support</b><p>Because buying online should feel as safe as buying in person.</p></div>
       <div class="tl-item"><small>TODAY</small><b>Thousands of happy customers</b><p>And a catalog that grows every single week.</p></div>

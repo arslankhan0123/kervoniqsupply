@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zelari | Website Under Maintenance</title>
+    <title>KervoniqSupply | Website Under Maintenance</title>
     <meta name="description"
-        content="Zelari is making improvements to provide you with a better experience. We'll be back shortly.">
+        content="KervoniqSupply is making improvements to provide you with a better experience. We'll be back shortly.">
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -517,9 +517,9 @@
 
         <!-- Header -->
         <header class="container-custom">
-            <a href="#" class="brand" aria-label="Zelari home">
+            <a href="#" class="brand" aria-label="KervoniqSupply home">
                 <span class="brand-logo">Z</span>
-                <span>Zelari</span>
+                <span>KervoniqSupply</span>
             </a>
         </header>
 
@@ -575,8 +575,8 @@
                                     Need immediate assistance?
                                 </div>
 
-                                <a href="mailto:support@zelari.com" class="support-link">
-                                    support@zelari.com
+                                <a href="mailto:support@kervoniqsupply.com" class="support-link">
+                                    support@kervoniqsupply.com
                                 </a>
                             </div>
                         </div>
@@ -598,7 +598,7 @@
                                 <div class="laptop-screen">
 
                                     <div class="screen-brand">
-                                        <span>Z</span> Zelari
+                                        <span>Z</span> KervoniqSupply
                                     </div>
 
                                     <div class="screen-text">
@@ -630,7 +630,7 @@
                 <div class="footer-inner">
 
                     <div class="d-flex align-items-center gap-3">
-                        <span class="footer-brand">Z Zelari</span>
+                        <span class="footer-brand">Z KervoniqSupply</span>
                         <span style="border-left: 1px solid #ccd8eb; height: 25px;"></span>
                         <span>Building a Smarter Tomorrow</span>
                     </div>
@@ -651,7 +651,7 @@
                                 <i class="fa-brands fa-instagram"></i>
                             </a>
                         </div>
-                        <span>&copy; {{ date('Y') }} Zelari. All rights reserved.</span>
+                        <span>&copy; {{ date('Y') }} KervoniqSupply. All rights reserved.</span>
                     </div>
 
                 </div>

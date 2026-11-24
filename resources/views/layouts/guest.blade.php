@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="csrf-token" content="{{ csrf_token() }}">
-<title>@yield('title', 'Account') · {{ zstore('name', 'Zelari') }}</title>
+<title>@yield('title', 'Account') · {{ zstore('name', 'KervoniqSupply') }}</title>
 <link rel="icon" href="{{ zbrand('icon') }}">
 @include('partials.theme-vars')
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -84,8 +84,8 @@ a{color:inherit;text-decoration:none}
 <div class="auth">
   <aside class="auth-art">
     <img class="bg" src="{{ zbg('hero1', 1400) }}" alt=""><span class="shade"></span><span class="orb o1"></span><span class="orb o2"></span>
-    <a href="{{ route('home') }}" class="auth-logo" aria-label="{{ zstore('name','Zelari') }}">
-      @if(zbrand_custom('logo'))<img src="{{ zbrand('logo') }}" alt="{{ zstore('name','Zelari') }}">@else{!! zlogo('logo-white.svg', 'g') !!}@endif
+    <a href="{{ route('home') }}" class="auth-logo" aria-label="{{ zstore('name','KervoniqSupply') }}">
+      @if(zbrand_custom('logo'))<img src="{{ zbrand('logo') }}" alt="{{ zstore('name','KervoniqSupply') }}">@else{!! zlogo('logo-white.svg', 'g') !!}@endif
     </a>
     <div class="auth-copy">
       @php
@@ -105,7 +105,7 @@ a{color:inherit;text-decoration:none}
       </div>
       @endif
     </div>
-    <div class="auth-foot">© {{ date('Y') }} {{ zstore('name','Zelari') }} · {{ zstore('tagline','') }}</div>
+    <div class="auth-foot">© {{ date('Y') }} {{ zstore('name','KervoniqSupply') }} · {{ zstore('tagline','') }}</div>
   </aside>
 
   <main class="auth-main">

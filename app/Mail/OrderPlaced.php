@@ -22,11 +22,11 @@ class OrderPlaced extends Mailable
 
     public function envelope(): Envelope
     {
-        $store = Setting::get('store_name', 'Zelari');
+        $store = Setting::get('store_name', 'KervoniqSupply');
         $no    = $this->order->order_number;
         return new Envelope(
             subject: $this->forAdmin
-                ? "🛒 New order #{$no} — PKR " . number_format($this->order->total, 0)
+                ? "🛒 New order #{$no} — " . zorder_price($this->order, $this->order->total)
                 : "Your {$store} order #{$no} is confirmed",
         );
     }
@@ -39,7 +39,7 @@ class OrderPlaced extends Mailable
                 'order'    => $this->order,
                 'forAdmin' => $this->forAdmin,
                 'store'    => [
-                    'name'    => Setting::get('store_name', 'Zelari'),
+                    'name'    => Setting::get('store_name', 'KervoniqSupply'),
                     'phone'   => Setting::get('store_phone', ''),
                     'address' => Setting::get('store_address', ''),
                     'email'   => Setting::get('store_email', Setting::get('mail_from_address', '')),
@@ -58,10 +58,10 @@ class OrderPlaced extends Mailable
         try {
             $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('shop.invoice', [
                 'order' => $this->order, 'pdf' => true,
-                'store' => ['name' => Setting::get('store_name', 'Zelari'), 'phone' => Setting::get('store_phone', ''), 'address' => Setting::get('store_address', ''), 'email' => Setting::get('store_email', Setting::get('mail_from_address', ''))],
+                'store' => ['name' => Setting::get('store_name', 'KervoniqSupply'), 'phone' => Setting::get('store_phone', ''), 'address' => Setting::get('store_address', ''), 'email' => Setting::get('store_email', Setting::get('mail_from_address', ''))],
             ])->setPaper('a4');
             return [
-                Attachment::fromData(fn () => $pdf->output(), 'Zelari-Invoice-' . $this->order->order_number . '.pdf')->withMime('application/pdf'),
+                Attachment::fromData(fn () => $pdf->output(), 'KervoniqSupply-Invoice-' . $this->order->order_number . '.pdf')->withMime('application/pdf'),
             ];
         } catch (\Throwable $e) {
             report($e);

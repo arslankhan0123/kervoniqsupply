@@ -30,7 +30,7 @@
                         <label class="form-label">Free delivery over (USD)</label>
                         <div class="relative"><span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 font-medium">$</span>
                         <input type="number" step="0.01" min="0" name="ship_free_over_usd" value="{{ old('ship_free_over_usd', $s['ship_free_over_usd'] ?? 30) }}" class="form-input pl-7 @error('ship_free_over_usd') border-red-400 @enderror"></div>
-                        <p class="text-gray-400 text-xs mt-1.5">0 = delivery is always free.@if(($s['ship_free_over_usd'] ?? 0) > 0) Currently ≈ {{ zorder_price((object)['currency_code'=>'PKR','currency_symbol'=>'Rs','exchange_rate'=>1], zfree_over()) }} in PKR.@endif</p>
+                        <p class="text-gray-400 text-xs mt-1.5">0 = delivery is always free.</p>
                         @error('ship_free_over_usd') <p class="text-red-500 text-xs mt-1.5">{{ $message }}</p> @enderror
                     </div>
                     <div>
@@ -54,7 +54,7 @@
                     </div>
                     <div>
                         <label class="form-label">Coverage</label>
-                        <input type="text" name="ship_coverage" value="{{ old('ship_coverage', $s['ship_coverage'] ?? 'nationwide') }}" placeholder="nationwide / across Pakistan" class="form-input">
+                        <input type="text" name="ship_coverage" value="{{ old('ship_coverage', $s['ship_coverage'] ?? 'nationwide') }}" placeholder="nationwide / across the world" class="form-input">
                     </div>
                 </div>
             <button type="submit" class="btn-primary inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold text-sm bg-brand-grad">

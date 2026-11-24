@@ -241,7 +241,7 @@ class CheckoutController extends Controller
                         'receipt_email'          => $order->customer_email,
                         'metadata[order_number]' => $order->order_number,
                         'metadata[order_id]'     => $order->id,
-                        'description'            => Setting::get('store_name', 'Zelari') . ' order ' . $order->order_number,
+                        'description'            => Setting::get('store_name', 'KervoniqSupply') . ' order ' . $order->order_number,
                     ]);
                 } catch (\RuntimeException $e) {
                     Payments::cancelAndRestock($order);
@@ -446,7 +446,7 @@ class CheckoutController extends Controller
         if (class_exists(\Barryvdh\DomPDF\Facade\Pdf::class)) {
             $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('shop.invoice', ['order' => $order, 'pdf' => true, 'store' => $store])
                 ->setPaper('a4');
-            return $pdf->download('Zelari-Invoice-' . $order->order_number . '.pdf');
+            return $pdf->download('KervoniqSupply-Invoice-' . $order->order_number . '.pdf');
         }
 
         return view('shop.invoice', ['order' => $order, 'pdf' => false, 'store' => $store]);
@@ -477,7 +477,7 @@ class CheckoutController extends Controller
     private function storeDetails(): array
     {
         return [
-            'name'    => Setting::get('store_name', 'Zelari'),
+            'name'    => Setting::get('store_name', 'KervoniqSupply'),
             'phone'   => Setting::get('store_phone', ''),
             'address' => Setting::get('store_address', ''),
             'email'   => Setting::get('store_email', Setting::get('mail_from_address', '')),

@@ -1,7 +1,7 @@
 @php
     /** @var \App\Models\Order $order */
     $pdf   = $pdf ?? false;
-    $store = $store ?? ['name' => 'Zelari', 'phone' => '', 'address' => '', 'email' => ''];
+    $store = $store ?? ['name' => 'KervoniqSupply', 'phone' => '', 'address' => '', 'email' => ''];
     $logoSrc  = $pdf ? zbrand_path('print') : zbrand('print');
     $paid   = $order->payment_status === 'paid';
     $method = ['cash_on_delivery' => 'Cash on Delivery', 'bank_transfer' => 'Bank Transfer', 'card' => 'Card (Stripe)', 'paypal' => 'PayPal'][$order->payment_method] ?? ucwords(str_replace('_', ' ', $order->payment_method));

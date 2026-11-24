@@ -120,7 +120,7 @@ class PayPal
     public static function createOrder(Order $order): string
     {
         [$amount, $currency] = self::chargeAmount($order);
-        $store = Setting::get('store_name', 'Zelari');
+        $store = Setting::get('store_name', 'KervoniqSupply');
         $res = self::api('POST', '/v2/checkout/orders', [
             'intent' => 'CAPTURE',
             'purchase_units' => [[

@@ -29,6 +29,8 @@ Route::get('/', [ShopController::class, 'home'])->name('home');
 Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
 Route::get('/product/{slug}', [ShopController::class, 'show'])->name('shop.show');
 Route::get('/brands', [ShopController::class, 'brands'])->name('brands');
+Route::post('/chatbot', [\App\Http\Controllers\Shop\ChatbotController::class, 'message'])->name('chatbot.message')->middleware('throttle:40,1');
+Route::get('/chatbot/poll', [\App\Http\Controllers\Shop\ChatbotController::class, 'poll'])->name('chatbot.poll')->middleware('throttle:120,1');
 Route::post('/product/{slug}/review', [ShopReviewController::class, 'store'])->middleware('throttle:10,1')->name('reviews.store');
 Route::get('/about', [ShopController::class, 'about'])->name('about');
 Route::match(['get','post'], '/contact', [ShopController::class, 'contact'])->name('contact');
@@ -85,8 +87,20 @@ Route::middleware(['auth', 'verified', 'admin'])->prefix('admin')->name('admin.'
         Route::delete('/{category}', [CategoryController::class, 'destroy'])->name('destroy');
     });
 
+    Route::get('/notifications', [\App\Http\Controllers\Admin\LiveChatController::class, 'notifications'])->name('notifications.index');
+
+    Route::prefix('chats')->name('chats.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\Admin\LiveChatController::class, 'index'])->name('index');
+        Route::get('/threads', [\App\Http\Controllers\Admin\LiveChatController::class, 'threads'])->name('threads');
+        Route::get('/messages', [\App\Http\Controllers\Admin\LiveChatController::class, 'messages'])->name('messages');
+        Route::post('/send', [\App\Http\Controllers\Admin\LiveChatController::class, 'send'])->name('send');
+        Route::post('/hours', [\App\Http\Controllers\Admin\LiveChatController::class, 'saveHours'])->name('hours');
+        Route::get('/notify-counts', [\App\Http\Controllers\Admin\LiveChatController::class, 'notifyCounts'])->name('notify');
+    });
+
     Route::prefix('sourcing')->name('sourcing.')->group(function () {
         Route::get('/', [SourcingRequestController::class, 'index'])->name('index');
+        Route::get('/{sourcing}', [SourcingRequestController::class, 'show'])->name('show')->whereNumber('sourcing');
         Route::post('/{sourcing}/status', [SourcingRequestController::class, 'status'])->name('status');
         Route::post('/{sourcing}/note', [SourcingRequestController::class, 'note'])->name('note');
         Route::delete('/{sourcing}', [SourcingRequestController::class, 'destroy'])->name('destroy');

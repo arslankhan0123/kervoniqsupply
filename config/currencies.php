@@ -19,7 +19,6 @@ return [
 
     'currencies' => [
         'USD' => ['symbol' => '$', 'name' => 'US Dollar', 'rate' => (float) env('CURRENCY_RATE_USD', 0.003571), 'decimals' => 2],
-        'PKR' => ['symbol' => 'Rs', 'name' => 'Pakistani Rupee', 'rate' => 1.0, 'decimals' => 0],
         'GBP' => ['symbol' => '£', 'name' => 'British Pound', 'rate' => (float) env('CURRENCY_RATE_GBP', 0.002817), 'decimals' => 2],
         'EUR' => ['symbol' => '€', 'name' => 'Euro', 'rate' => (float) env('CURRENCY_RATE_EUR', 0.003333), 'decimals' => 2],
         'AED' => ['symbol' => 'AED', 'name' => 'UAE Dirham', 'rate' => (float) env('CURRENCY_RATE_AED', 0.013123), 'decimals' => 2],
@@ -59,7 +58,6 @@ return [
     */
     'countries' => [
         'US' => ['name' => 'United States', 'flag' => '🇺🇸', 'currency' => 'USD'],
-        'PK' => ['name' => 'Pakistan', 'flag' => '🇵🇰', 'currency' => 'PKR'],
         'GB' => ['name' => 'United Kingdom', 'flag' => '🇬🇧', 'currency' => 'GBP'],
         'CA' => ['name' => 'Canada', 'flag' => '🇨🇦', 'currency' => 'CAD'],
         'AU' => ['name' => 'Australia', 'flag' => '🇦🇺', 'currency' => 'AUD'],
@@ -110,7 +108,7 @@ return [
 
     /* IP geolocation (free, no key). Set GEOIP_ENABLED=false to skip lookups. */
     'geoip' => [
-        'enabled'  => filter_var(env('GEOIP_ENABLED', true), FILTER_VALIDATE_BOOL),
+        'enabled'  => filter_var(env('GEOIP_ENABLED', false), FILTER_VALIDATE_BOOL),
         'timeout'  => 3,
         /* Country code to assume for localhost / private IPs while developing. */
         'dev_country' => env('GEOIP_DEV_COUNTRY', 'US'),

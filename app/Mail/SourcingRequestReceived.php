@@ -37,7 +37,7 @@ class SourcingRequestReceived extends Mailable
             text: 'emails.sourcing-request-text',
             with: [
                 'sourcing' => $this->sourcing,
-                'store'    => ['name' => Setting::get('store_name', 'Zelari')],
+                'store'    => ['name' => Setting::get('store_name', 'KervoniqSupply')],
                 'adminUrl' => route('admin.sourcing.index'),
             ],
         );

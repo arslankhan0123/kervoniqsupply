@@ -5,7 +5,7 @@
   $zPath   = $zCustom ? zbrand_path('logo') : public_path('images/logo-white.png');
   if (!is_file($zPath)) { $zPath = public_path('images/logo-white.png'); }
   $zSrc    = isset($message) && is_file($zPath) ? $message->embed($zPath) : zbrand('logo');
-  $zName   = \App\Models\Setting::get('store_name', 'Zelari');
+  $zName   = \App\Models\Setting::get('store_name', 'KervoniqSupply');
 @endphp
 @if($zCustom)
   <span style="display:inline-block;background:#ffffff;border-radius:10px;padding:6px 10px;"><img src="{{ $zSrc }}" alt="{{ $zName }}" height="32" style="height:32px;max-width:180px;display:block;border:0;"></span>

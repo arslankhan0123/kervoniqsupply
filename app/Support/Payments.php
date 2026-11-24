@@ -137,7 +137,7 @@ class Payments
             'amount'   => $amount,
             'currency' => strtolower($currency),
             'automatic_payment_methods[enabled]' => 'true',
-            'description' => (Setting::get('store_name', 'Zelari')) . ' order',
+            'description' => (Setting::get('store_name', 'KervoniqSupply')) . ' order',
         ];
         foreach ($metadata as $k => $v) $params["metadata[$k]"] = (string) $v;
         if ($receiptEmail) $params['receipt_email'] = $receiptEmail;

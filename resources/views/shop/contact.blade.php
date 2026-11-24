@@ -3,7 +3,7 @@
 
 @push('styles')
 <style>
-.ct{padding:56px 0 10px}
+.ct{padding-top:56px;padding-bottom:10px}
 .ct-grid{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;align-items:start}
 @media(max-width:992px){.ct-grid{grid-template-columns:1fr}}
 .ct-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:30px}
@@ -92,7 +92,7 @@
     </div>
   </div>
 
-  <div class="map reveal"><div class="grid-bg"></div><span class="ring"></span><div class="pin"><i class="fa-solid fa-location-dot"></i><span>{{ zstore('name','Zelari') }} · {{ zstore('address') }}</span></div></div>
+  <div class="map reveal"><div class="grid-bg"></div><span class="ring"></span><div class="pin"><i class="fa-solid fa-location-dot"></i><span>{{ zstore('name','KervoniqSupply') }} · {{ zstore('address') }}</span></div></div>
 
   <div class="faq">
     <div class="sec-head reveal"><div><h2 class="sec-title tt-none">Frequently asked</h2><div class="sec-deco"><i></i><b></b></div></div></div>

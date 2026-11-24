@@ -41,7 +41,7 @@ class ContactMessageReceived extends Mailable
             with: [
                 'contact' => $this->contact,
                 'store'   => [
-                    'name'  => Setting::get('store_name', 'Zelari'),
+                    'name'  => Setting::get('store_name', 'KervoniqSupply'),
                     'email' => Setting::get('store_email', ''),
                 ],
                 'adminUrl' => route('admin.messages.index'),

@@ -226,8 +226,8 @@ class SettingController extends Controller
 
         try {
             Mail::raw(
-                "This is a test email from " . Setting::get('store_name', 'Zelari') . ".\n\nIf you can read this, your SMTP settings are working.",
-                fn ($m) => $m->to($request->test_email)->subject('✅ Test email from ' . Setting::get('store_name', 'Zelari'))
+                "This is a test email from " . Setting::get('store_name', 'KervoniqSupply') . ".\n\nIf you can read this, your SMTP settings are working.",
+                fn ($m) => $m->to($request->test_email)->subject('✅ Test email from ' . Setting::get('store_name', 'KervoniqSupply'))
             );
         } catch (\Throwable $e) {
             report($e);

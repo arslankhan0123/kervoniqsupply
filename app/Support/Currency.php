@@ -56,12 +56,8 @@ class Currency
 
     public static function currentCode(): string
     {
-        try {
-            $code = session('geo.currency');
-        } catch (\Throwable) {
-            $code = null;
-        }
-        return ($code && isset(self::all()[$code])) ? $code : self::default();
+        // Currency is locked to the default (USD): no IP detection, no manual switching.
+        return self::default();
     }
 
     public static function currentCountry(): ?string

@@ -201,7 +201,7 @@ if (!function_exists('zlogo')) {
         if (!isset($cache[$key])) {
             $path = public_path('images/' . $file);
             $svg  = is_file($path) ? file_get_contents($path) : '';
-            if ($svg === '') return '<img src="' . asset('images/' . $file) . '" alt="Zelari">';
+            if ($svg === '') return '<img src="' . asset('images/' . $file) . '" alt="KervoniqSupply">';
             if ($suffix !== '') {
                 $svg = preg_replace('/id="([a-z]+-)([a-z]+)"/i', 'id="$1$2' . $suffix . '"', $svg);
                 $svg = preg_replace('/url\(#([a-z]+-)([a-z]+)\)/i', 'url(#$1$2' . $suffix . ')', $svg);
@@ -305,7 +305,7 @@ if (!function_exists('zcontent')) {
         $v = (string) \App\Models\Setting::get($key, $default);
         if ($v === '' || !str_contains($v, '{')) return $v;
         return strtr($v, [
-            '{store}'    => zstore('name', 'Zelari'),
+            '{store}'    => zstore('name', 'KervoniqSupply'),
             '{returns}'  => zship('return_days', '7'),
             '{days}'     => zship('delivery_days', '2–5'),
             '{hours}'    => zship('pack_hours', '24'),

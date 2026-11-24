@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'Dashboard') — {{ zstore('name', 'Zelari') }} Admin</title>
+    <title>@yield('title', 'Dashboard') — {{ zstore('name', 'KervoniqSupply') }} Admin</title>
     @include('partials.theme-vars')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="icon" href="{{ zbrand('icon') }}">
@@ -67,9 +67,8 @@
 
         /* Sidebar brand logo glow */
         .brand-logo {
-            background: linear-gradient(135deg, var(--indigo), var(--violet));
-            box-shadow: 0 0 20px rgba(99, 102, 241, .6), 0 0 40px rgba(139, 92, 246, .3);
-            animation: pulse-glow 3s ease-in-out infinite;
+            background: #fff;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, .35), 0 0 0 1px rgba(255, 255, 255, .12);
         }
 
         @keyframes pulse-glow {
@@ -88,13 +87,13 @@
         .nav-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 11px 16px;
-            margin: 2px 8px;
-            border-radius: 10px;
+            gap: 10px;
+            padding: 8px 13px;
+            margin: 1px 8px;
+            border-radius: 9px;
             cursor: pointer;
             color: rgba(255, 255, 255, .65);
-            font-size: 14px;
+            font-size: 13.5px;
             font-weight: 500;
             text-decoration: none;
             transition: all .22s ease;
@@ -142,12 +141,12 @@
         .sub-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 9px 16px 9px 48px;
+            gap: 9px;
+            padding: 6px 14px 6px 44px;
             margin: 1px 8px;
             border-radius: 8px;
             color: rgba(255, 255, 255, .5);
-            font-size: 13px;
+            font-size: 12.5px;
             font-weight: 500;
             text-decoration: none;
             transition: all .2s;
@@ -713,12 +712,12 @@
         <div class="sb-blob sb-blob-2"></div>
 
         <!-- Brand -->
-        <div class="flex items-center gap-3 px-4 py-5 relative">
-            <div class="brand-logo w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden">
-                <img src="{{ zbrand('icon') }}" alt="" class="w-full h-full object-cover">
+        <div class="flex items-center gap-3 px-4 py-4 relative">
+            <div class="brand-logo w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 overflow-hidden p-1">
+                <img src="{{ zbrand('icon') }}" alt="" class="w-full h-full object-contain">
             </div>
             <div class="brand-text">
-                <div class="text-white font-bold text-lg leading-tight truncate max-w-[150px]">{{ zstore('name', 'Zelari') }}</div>
+                <div class="text-white font-bold text-lg leading-tight truncate max-w-[150px]">{{ zstore('name', 'KervoniqSupply') }}</div>
                 <div class="text-indigo-300 text-xs font-medium">Admin Panel</div>
             </div>
             <!-- Collapse toggle (desktop) -->
@@ -733,7 +732,7 @@
         </div>
 
         <!-- Nav label -->
-        <div class="nav-label px-5 mb-1 mt-2">
+        <div class="nav-label px-5 mb-0.5 mt-1.5">
             <span class="text-white/30 text-xs font-semibold uppercase tracking-widest">Main</span>
         </div>
 
@@ -848,9 +847,19 @@
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
                 <span class="nav-label flex-1 text-left">Sourcing</span>
-                @if($newSourcing)
-                    <span class="nav-label text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-400 text-amber-950">{{ $newSourcing }}</span>
-                @endif
+                <span data-badge="sourcing_new" class="nav-label text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-400 text-amber-950" @if(!$newSourcing) style="display:none" @endif>{{ $newSourcing }}</span>
+            </a>
+
+            @php
+                try { \App\Models\ChatMessage::ensureTable(); $unreadChats = \App\Models\ChatMessage::where('sender', 'user')->where('read_by_agent', false)->count(); }
+                catch (\Throwable $e) { $unreadChats = 0; }
+            @endphp
+            <a href="{{ route('admin.chats.index') }}" class="nav-item {{ request()->routeIs('admin.chats.*') ? 'active' : '' }}">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                </svg>
+                <span class="nav-label flex-1 text-left">Live Chat</span>
+                <span data-badge="chats" class="nav-label text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-400 text-amber-950" @if(!$unreadChats) style="display:none" @endif>{{ $unreadChats }}</span>
             </a>
 
             @php
@@ -863,9 +872,7 @@
                         d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 <span class="nav-label flex-1 text-left">Messages</span>
-                @if($unreadMessages)
-                    <span class="nav-label text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-400 text-amber-950">{{ $unreadMessages }}</span>
-                @endif
+                <span data-badge="messages" class="nav-label text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-400 text-amber-950" @if(!$unreadMessages) style="display:none" @endif>{{ $unreadMessages }}</span>
             </a>
 
             @php
@@ -901,9 +908,7 @@
                             d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
                     </svg>
                     <span class="nav-label flex-1 text-left">Orders</span>
-                    @if($pendingOrders)
-                        <span x-show="!orderOpen" class="nav-label text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-400 text-amber-950" title="{{ $pendingOrders }} pending orders">{{ $pendingOrders }}</span>
-                    @endif
+                    <span data-badge="orders_pending" x-show="!orderOpen" class="nav-label text-[10px] font-bold px-1.5 py-0.5 rounded-full bg-amber-400 text-amber-950" title="pending orders" @if(!$pendingOrders) style="display:none" @endif>{{ $pendingOrders }}</span>
                     <svg :class="{ 'rotate-180': orderOpen }" class="nav-label w-4 h-4 transition-transform" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -1083,7 +1088,7 @@
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                         </svg>
-                        <span class="notif-dot"></span>
+                        <span class="notif-dot" id="admNotifDot" style="display:none"></span>
                     </button>
                     <!-- Notif dropdown -->
                     <div x-show="notifOpen" x-transition x-cloak class="profile-dropdown" style="width:300px">
@@ -1091,38 +1096,11 @@
                             <span class="font-semibold text-gray-800 text-sm">Notifications</span>
                             <span class="text-xs text-indigo-600 font-medium cursor-pointer">Mark all read</span>
                         </div>
-                        <div class="p-3 space-y-2">
-                            <div class="flex gap-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-indigo-600" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-semibold text-gray-700">New order received</div>
-                                    <div class="text-xs text-gray-400">2 minutes ago</div>
-                                </div>
-                            </div>
-                            <div class="flex gap-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer">
-                                <div
-                                    class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
-                                    <svg class="w-4 h-4 text-green-600" fill="none" viewBox="0 0 24 24"
-                                        stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                                    </svg>
-                                </div>
-                                <div>
-                                    <div class="text-xs font-semibold text-gray-700">Payment confirmed</div>
-                                    <div class="text-xs text-gray-400">1 hour ago</div>
-                                </div>
-                            </div>
+                        <div class="p-3 space-y-2" id="admNotifList" style="max-height:320px;overflow-y:auto">
+                            <div class="text-xs text-gray-400 text-center py-4">No new notifications.</div>
                         </div>
                         <div class="px-4 py-2 border-t border-gray-100">
-                            <a href="#" class="text-xs text-indigo-600 font-medium">View all notifications →</a>
+                            <a href="{{ route('admin.notifications.index') }}" class="text-xs text-indigo-600 font-medium">View all notifications →</a>
                         </div>
                     </div>
                 </div>
@@ -1238,11 +1216,124 @@
         <!-- ── FOOTER ── -->
         <footer class="px-6 py-4 border-t border-gray-200 bg-white">
             <div class="flex items-center justify-between text-xs text-gray-400">
-                <span>© {{ date('Y') }} {{ zstore('name', 'Zelari') }} — All rights reserved.</span>
+                <span>© {{ date('Y') }} {{ zstore('name', 'KervoniqSupply') }} — All rights reserved.</span>
                 <span>{{ zstore('tagline', '') }}</span>
             </div>
         </footer>
     </div>
+
+    {{-- ═══ Sound notifications: new chats, messages, orders, sourcing ═══ --}}
+    <style>
+    .adm-toasts{position:fixed;right:18px;bottom:18px;z-index:4000;display:flex;flex-direction:column;gap:9px;max-width:320px}
+    .adm-toast{display:flex;align-items:center;gap:11px;background:#1e1b4b;color:#fff;border-radius:14px;padding:13px 16px;box-shadow:0 20px 46px -14px rgba(15,18,48,.55);cursor:pointer;font-size:13.5px;font-weight:600;animation:admIn .3s cubic-bezier(.2,.7,.2,1)}
+    .adm-toast i{font-size:18px}
+    .adm-toast small{display:block;font-weight:500;color:rgba(255,255,255,.7);font-size:11.5px}
+    @keyframes admIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+    </style>
+    <div class="adm-toasts" id="admToasts"></div>
+    <script>
+    (function(){
+      const URL_COUNTS='{{ route('admin.chats.notify') }}';
+      const LINKS={chats:'{{ route('admin.chats.index') }}',messages:'{{ route('admin.messages.index') }}',orders:'{{ \Illuminate\Support\Facades\Route::has('admin.orders.index') ? route('admin.orders.index') : url('/admin/orders') }}',sourcing:'{{ \Illuminate\Support\Facades\Route::has('admin.sourcing.index') ? route('admin.sourcing.index') : url('/admin/sourcing') }}'};
+      const META={chats:['💬','New live chat message','A visitor is waiting in Live Chat'],messages:['✉️','New contact message','Someone sent a message'],orders:['🛒','New order received!','Open Orders to process it'],sourcing:['📦','New sourcing request','Open Sourcing to review it']};
+
+      /* ── sound: WebAudio chime; if the browser hasn't been clicked yet, the
+            ding is QUEUED and plays on the very next click/keypress ── */
+      let ctx=null, pending=0;
+      function ensureCtx(){
+        try{ ctx=ctx||new (window.AudioContext||window.webkitAudioContext)(); if(ctx.state==='suspended') ctx.resume(); }catch(_){ return false; }
+        return !!ctx && ctx.state==='running';
+      }
+      function chime(n){
+        n=Math.min(n||1,3);
+        try{
+          for(let k=0;k<n;k++){
+            const t=ctx.currentTime + k*0.9;
+            [[880,0],[1318.5,.16],[1760,.3]].forEach(([f,d])=>{
+              const o=ctx.createOscillator(), g=ctx.createGain();
+              o.type='sine'; o.frequency.value=f; o.connect(g); g.connect(ctx.destination);
+              g.gain.setValueAtTime(0,t+d); g.gain.linearRampToValueAtTime(.3,t+d+.02); g.gain.exponentialRampToValueAtTime(.0001,t+d+.7);
+              o.start(t+d); o.stop(t+d+.75);
+            });
+          }
+        }catch(_){}
+      }
+      function ding(){ if(ensureCtx()) chime(1); else pending++; }
+      ['pointerdown','keydown','touchstart'].forEach(ev=>addEventListener(ev,function(){
+        if(ensureCtx() && pending){ chime(pending); pending=0; }
+      },{capture:true}));
+
+      function toast(kind,extra){
+        const m=META[kind], box=document.getElementById('admToasts');
+        const d=document.createElement('div'); d.className='adm-toast';
+        d.innerHTML='<i>'+m[0]+'</i><div>'+m[1]+(extra?' ('+extra+')':'')+'<small>'+m[2]+' — click to open</small></div>';
+        d.onclick=()=>location.href=LINKS[kind];
+        box.appendChild(d); setTimeout(()=>{ d.style.transition='opacity .4s'; d.style.opacity=0; setTimeout(()=>d.remove(),400); },8000);
+      }
+      const baseTitle=document.title; let flashing=null;
+      function flash(){
+        if(flashing) return;
+        flashing=setInterval(()=>{ document.title = document.title===baseTitle ? '🔔 '+baseTitle : baseTitle; },1200);
+      }
+      addEventListener('visibilitychange',()=>{ if(!document.hidden){ if(flashing){ clearInterval(flashing); flashing=null; document.title=baseTitle; } tick(); } });
+
+      /* per-tab baseline (sessionStorage) — two open admin tabs both ring */
+      let base=null; try{ base=JSON.parse(sessionStorage.getItem('admNotify')||'null'); }catch(_){}
+      let busy=false;
+      async function tick(){
+        if(busy) return; busy=true;
+        try{
+          const r=await fetch(URL_COUNTS,{headers:{'Accept':'application/json'}});
+          if(r.ok){
+            const j=await r.json();
+            if(base){
+              let hit=0;
+              ['chats','messages','orders','sourcing'].forEach(k=>{
+                const diff=(j[k]|0)-(base[k]|0);
+                if(diff>0){ toast(k, diff>1 ? diff+' new' : ''); hit+=diff; }
+              });
+              if(hit){ ding(); if(document.hidden) flash(); }
+            }
+            base=j; try{ sessionStorage.setItem('admNotify', JSON.stringify(j)); }catch(_){}
+            /* live sidebar badges */
+            document.querySelectorAll('[data-badge]').forEach(el=>{
+              const v=j[el.dataset.badge]|0;
+              el.textContent=v; el.style.display = v>0 ? '' : 'none';
+            });
+            /* bell dropdown + dot */
+            const tot=(j.chats|0)+(j.messages|0)+(j.orders_pending|0)+(j.sourcing_new|0);
+            const dot=document.getElementById('admNotifDot'); if(dot) dot.style.display = tot>0 ? '' : 'none';
+            const list=document.getElementById('admNotifList');
+            if(list){
+              if(j.recent && j.recent.length){
+                list.innerHTML='';
+                j.recent.forEach(n=>{
+                  const a=document.createElement('a');
+                  a.href=n.url; a.className='flex gap-3 p-2 hover:bg-gray-50 rounded-lg cursor-pointer';
+                  a.innerHTML='<div class="w-8 h-8 rounded-full bg-indigo-50 flex items-center justify-center flex-shrink-0" style="font-size:15px"></div><div><div class="text-xs font-semibold text-gray-700"></div><div class="text-xs text-gray-400"></div></div>';
+                  a.children[0].textContent=n.icon;
+                  a.children[1].children[0].textContent=n.title;
+                  a.children[1].children[1].textContent=n.time;
+                  list.appendChild(a);
+                });
+              } else {
+                list.innerHTML='<div class="text-xs text-gray-400 text-center py-4">No new notifications.</div>';
+              }
+            }
+          }
+        }catch(_){}
+        busy=false;
+      }
+
+      /* poll from a Web Worker so background-tab timer throttling can't stop it */
+      tick();
+      try{
+        const blob=new Blob(['setInterval(function(){postMessage(1)},10000)'],{type:'text/javascript'});
+        const w=new Worker(URL.createObjectURL(blob));
+        w.onmessage=tick;
+      }catch(_){ setInterval(tick,10000); }
+    })();
+    </script>
 
     @stack('scripts')
 </body>
