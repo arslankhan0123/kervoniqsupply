@@ -341,13 +341,17 @@ if (!function_exists('zfaqs')) {
     }
 }
 if (!function_exists('ztel')) {
-    /** Normalize a phone number for tel: links while preserving an international + prefix. */
+    /** Normalize a phone number for tel: links, assuming +1 for ten-digit US numbers. */
     function ztel(?string $phone): string
     {
         $phone = trim((string) $phone);
         $hasInternationalPrefix = str_starts_with($phone, '+');
         $digits = preg_replace('/\D+/', '', $phone);
 
-        return ($hasInternationalPrefix ? '+' : '') . $digits;
+        if ($hasInternationalPrefix) {
+            return '+' . $digits;
+        }
+
+        return strlen($digits) === 10 ? '+1' . $digits : $digits;
     }
 }

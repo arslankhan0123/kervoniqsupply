@@ -192,7 +192,7 @@
                     </div>
                     <div>
                         <label class="form-label">Hotline phone</label>
-                        <input type="text" name="store_phone" value="{{ old('store_phone', $s['store_phone'] ?? '') }}" placeholder="+1 800 000 0000" class="form-input">
+                        <input type="text" name="store_phone" value="{{ old('store_phone', $s['store_phone'] ?? '') }}" placeholder="(806) 209-1386" class="form-input">
                     </div>
                     <div>
                         <label class="form-label">WhatsApp number</label>
