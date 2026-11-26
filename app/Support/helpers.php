@@ -341,9 +341,13 @@ if (!function_exists('zfaqs')) {
     }
 }
 if (!function_exists('ztel')) {
-    /** Digits-only phone for tel:/wa.me links. */
+    /** Normalize a phone number for tel: links while preserving an international + prefix. */
     function ztel(?string $phone): string
     {
-        return preg_replace('/\D+/', '', (string) $phone);
+        $phone = trim((string) $phone);
+        $hasInternationalPrefix = str_starts_with($phone, '+');
+        $digits = preg_replace('/\D+/', '', $phone);
+
+        return ($hasInternationalPrefix ? '+' : '') . $digits;
     }
 }
